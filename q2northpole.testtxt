@@ -1,0 +1,348 @@
+Test documentation for Santa Claus Locking problem:
+
+Script started on Fri 08 Nov 2013 06:36:10 PM EST
+
+Testing too many parameters:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 10 2 15 5 8 6
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] 
+
+
+Testing for illegal N values: ( 3 test cases)
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole -1
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 0
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole x
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+Testing for illegal E values:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 -1
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 0
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 x
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+Testing for illegal seed values:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2 -1
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2 0
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2 x
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+Testing for illegal C values:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2 2 -1
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+Testing for illegal D values:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2 2 2 -1
+Usage: ./northpole_keeru [ N (> 0) [ E (> 0) [ Seed (> 0) [ C (>= 0) [ D (>= 0) ] ] ] ] ]
+
+Testing default case:
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole
+Sa	E1	E2	E3	R4	R5	R6	R7	R8	
+--	--	--	--	--	--	--	--	--	
+								S	
+			S					V	
+	S	S	W	S					
+	W								
+	H								
+S	B 1			V		S			
+N									
+B		W				V		I	
+		H						B 1	
+		B 2		I					
+				B 2		I			
+						B 3	S		
+			H				V		
+A			B 3						
+C			U		S		I		
+		U	C						
+	U	C							
+B 1	C				V		B 4		
+	B 2	B 3	c		I				
+		U 3							
+		c							
+	U 2	W	W						
+U 1	c	H							
+c		B 1	H		B 5				
+N	W		B 2						
+A									
+D					U				
+	H				D		U		
+						U	D		
+				U		D			
+				D				U	
+B 3	B 3			B 4	B 2		B 1	D	
+						d		B 5	
+								U 5	
+				U 4		V		d	
+U 3				d				V	
+d					U 2				
+				V	d		U 1		
+N							d		
+A									
+C	U					I		I	
+	C		U		V				
+		U	C		I		V		
+B 1		C		I	B 3	B 2	I	B 1	
+	c	B 2	B 3				B 4		
+			U 3						
+			c						
+		U 2	W						
+U 1		c							
+c									
+N	W	W	H	B 5					
+A		H							
+D				U					
+				D			U		
+	H				U		D		
+					D	U			
+						D		U	
+B 1	B 3	B 2	B 1	B 3	B 5	B 2	B 4	D	
+					U 5			d	
+					d				
+					V				
+					I		U 4		
+							d		
+				U 3			V		
+				d					
+				V					
+				I				V	
+						U 2		I	
+U 1						d			
+d					B 1				
+N						V			
+A				B 2		I	I	B 3	
+C	U								
+	C	U							
+		C	U						
+B 2	B 1	B 3	C			B 4	B 5		
+		U 3	c						
+U 2		c							
+c	U 1								
+...	...	...	F	...	...	...	...	...	
+...	...	F	...	...	...	...	...	...	
+N	c								
+...	F	...	...	...	...	...	...	...	
+A									
+D							U		
+						U	D		
+						D		U	
+				U				D	
+				D	U				
+B 3					D		B 2	B 1	
+				B 5	B 4	d			
+...	...	...	...	...	...	F	...	...	
+				U 5					
+				d					
+...	...	...	...	F	...	...	...	...	
+					U 4				
+					d				
+...	...	...	...	...	F	...	...	...	
+U 3									
+d							U 2		
+							d		
+...	...	...	...	...	...	...	F	...	
+								U 1	
+								d	
+...	...	...	...	...	...	...	...	F	
+N									
+A									
+F	...	...	...	...	...	...	...	...	
+Workshop closed
+
+Testing: elves can't consult by fewer than 3 elves
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 2 2
+Sa	E1	E2	R3	R4	R5	R6	R7	
+--	--	--	--	--	--	--	--	
+			S					
+			V					
+			I					
+	S	S	B 1	S				
+S		W		V		S		
+	W			I		V		
+				B 2			S	
+N							V	
+B	H							
+	X							
+...	F	...	...	...	...	...	...	
+		H						
+		X						
+...	...	F	...	...	...	...	...	
+						I		
+						B 3	I	
+					S		B 4	
+					V			
+					I			
+A					B 5			
+D					U			
+					D		U	
+						U	D	
+				U		D		
+			U	D				
+B 1			D		B 2		B 3	
+			B 4	B 5		d		
+				U 5				
+			U 4	d				
+			d					
+			V	V			U 3	
+			I		U 2	V	d	
+U 1					d			
+d								
+N			B 1	I			V	
+B				B 2	V	I		
+					I	B 3	I	
+A					B 4		B 5	
+D							U	
+					U		D	
+					D	U		
+				U		D		
+			U	D				
+B 3			D		B 2	B 4	B 1	
+			B 5	d				
+			U 5					
+			d			U 4		
+U 3				V		d		
+d					U 2			
+					d	V		
+			V			I	U 1	
+						B 1	d	
+N							V	
+B				I	V			
+				B 2	I			
+					B 3		I	
+			I				B 4	
+A			B 5					
+D			U					
+			D				U	
+					U		D	
+				U	D			
+				D		U		
+B 1			B 5	B 2	B 3	D	B 4	
+						d		
+...	...	...	...	...	...	F	...	
+			U 5					
+			d					
+...	...	...	F	...	...	...	...	
+							U 4	
+							d	
+...	...	...	...	...	...	...	F	
+					U 3			
+					d			
+...	...	...	...	...	F	...	...	
+				U 2				
+				d				
+...	...	...	...	F	...	...	...	
+U 1								
+d								
+N								
+A								
+F	...	...	...	...	...	...	...	
+Workshop closed
+
+Testing with a large number of consulting
+
+kdvijaya@linux024:~/cs343/a4$ ./northpole 1 5 999 8 8
+Sa	E1	E2	E3	E4	E5	R6	R7	R8	R9	R10	
+--	--	--	--	--	--	--	--	--	--	--	
+			S					S	S		
+			W					V	V		
+									I		
+	S								B 1		
+	W	S									
+		W		S				I			
+	H							B 2			
+	X										
+...	F	...	...	...	...	...	...	...	...	...	
+		H									
+		X									
+...	...	F	...	...	...	...	...	...	...	...	
+						S					
+S			H			V					
+			B 1	W		I					
+N						B 3	S				
+B				H	S						
+				B 2	W		V			S	
+							I				
+							B 4			V	
+										I	
+A					H					B 5	
+D										U	
+							U			D	
+						U	D				
+						D		U			
+								D	U		
+B 1					B 3	B 4	B 5	B 3	D	B 2	
+							U 5		d		
+						U 4	d		V		
+						d					
+						V		U 3			
+								d		U 2	
+U 1						I	V	V		d	
+d										V	
+						B 1			I	I	
+N									B 3	B 2	
+A											
+C					U		I	I			
+				U	C						
+			U	C							
+B 1			C		B 2		B 5	B 4			
+			B 3	c							
+			U 3								
+			c		U 2						
+U 1			W		c						
+c											
+N											
+A											
+D			H	W	W		U				
+							D	U			
+				H				D	U		
+									D	U	
+					H	U				D	
+B 4			B 1	B 2	B 3	D	B 1	B 3	B 2		
+						B 5				d	
+						U 5					
+U 4						d					
+d								U 3			
+								d			
+								V	U 2	V	
+									d		
+									V		
+						V	U 1		I	I	
+N							d		B 1		
+A						I	V	I		B 2	
+C					U						
+				U	C						
+			U	C			I				
+B 2			C		B 1	B 3	B 5	B 4			
+			B 3	c							
+			U 3	W							
+			c								
+U 2			W								
+c					U 1						
+					c						
+			H		W						
+			B 1	H							
+N				B 2							
+A											
+--------------Output truncated------------
+kdvijaya@linux024:~/cs343/a4$ exit
+exit
+
+Script done on Fri 08 Nov 2013 06:47:14 PM EST
